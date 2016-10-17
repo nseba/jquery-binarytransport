@@ -1,0 +1,27 @@
+{
+    "name": "jquery-binarytransport",
+    "description": "This is a copy of the jquery binary transport implementation from https://github.com/henrya/js-jquery/tree/master/BinaryTransport with npm support",
+    "author": "",
+    "version": "1.0.0",
+    "main": "./jquery.binarytransport.js",
+    "homepage": "https://github.com/nseba/jquery-binarytransport",
+    "license": "Public-Domain",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nseba/jquery-binarytransport.git"
+    },
+    "bugs": "https://github.com/nseba/jquery-binarytransport/issues",
+    "keywords": [
+        "jquery",
+        "binary",
+        "binary transport",
+        "binarytransport",
+        "transport",
+        "jquery-binarytransport",
+        "jquery.binarytransport",
+        "henrya.js-jquery"        
+    ],
+    "engines": {
+        "node": ">=0.4.0"
+    }
+}

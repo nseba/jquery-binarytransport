@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Xhr2 Blob/ArrayBuffer feature test</title>
+	<style type="text/css">
+		ul {list-style-type:none;padding:0;margin:0;}	
+		li {padding:10px;color:#fff;border:1px solid #000;}
+		.pass {background:green;}
+		.fail {background:red;}
+	</style>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	$( document ).ready(function(){
+		// check for native XHR2 response type support
+		var isSupported = function(responseType){
+			if (typeof XMLHttpRequest == 'undefined') {
+				return false;
+			}
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET', '/');
+			try {
+				xhr.responseType = responseType.toLowerCase();
+			} catch (e) {
+				return false;
+			}
+		   	var x = xhr.responseType === responseType.toLowerCase();
+			// response type support detected, move on..
+			if(x){
+				if(window[responseType]){
+					return x;
+				} else {
+					return false;
+				}
+			} else {
+				return x;
+			}
+		};
+		$("#browser").text(navigator.userAgent.toLowerCase());	
+		var detectables = ["Blob","ArrayBuffer"];
+		for(var i in detectables){
+			var l = $("<li/>");
+			if(isSupported(detectables[i])){
+				l.addClass('pass').html(detectables[i]+ " support: <strong>yes</strong>");
+			} else {
+				l.addClass('fail').html(detectables[i]+ " support: <strong>no</strong>");
+			}
+			$("#detectables").append(l);
+		}
+	});
+	</script>
+</head>
+<body>
+<h1>Xhr2 Blob/ArrayBuffer feature test</h1>
+<p><strong>Browser:</strong><span id="browser"></span></p>
+<ul id="detectables">
+</ul>
+</body>
+</html>
